@@ -42,3 +42,22 @@ Route::get('/login',function(  Request $request){
         // return "false";
     }
 });
+
+
+Route::get('/showdata',function(Request $request){
+
+    try{
+        $td=signup::all();
+        if($td==null){
+            throw new Exception('Data not found');
+        }
+        $output=[];
+        $output["result"]=$td;
+        $output['status']="ok";
+        return response()->json($output,200);
+    }
+    catch(\Exception $ex){
+        $error=array("status"=>"failed","error"=>$ex -> getMessage());
+        return response()->json($error,200);
+    }
+});

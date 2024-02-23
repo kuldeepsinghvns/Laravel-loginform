@@ -46,6 +46,10 @@ Route::get('/logout', function () {
     return view('logout');
 });
 
+Route::get('/show',function(){
+    return view('showdata');
+});
+
 
 
 Route::get('/test',function(){
