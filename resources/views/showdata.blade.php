@@ -45,6 +45,10 @@
         }
     </script>
 
+    <!-- Direct show All Data -->
+
+    <!-- <script>showdata()</script> -->
+
     
 </body>
 </html>
