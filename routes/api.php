@@ -1,6 +1,9 @@
 <?php
 
+
+
 use App\LoginManager;
+use App\SendFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\signup;
@@ -22,21 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::get('/login',function(  Request $request){
+Route::get('/login', function (Request $request) {
 
-    try{
-        $username=$request['username'];
-        $password=$request['password'];
-        $result=LoginManager::isUsernameAndPasswordCorrect($username,$password);
-        
+    try {
+        $username = $request['username'];
+        $password = $request['password'];
+        $result = LoginManager::isUsernameAndPasswordCorrect($username, $password);
 
-        if(!$result){
+
+        if (!$result) {
             throw new Exception('Username or password wrong');
         }
 
         return "true";
-    }
-    catch(\Exception $ex){
+    } catch (\Exception $ex) {
         return "false";
 
         // return "false";
@@ -44,20 +46,22 @@ Route::get('/login',function(  Request $request){
 });
 
 
-Route::get('/showdata',function(Request $request){
+Route::get('/showdata', function (Request $request) {
 
-    try{
-        $td=signup::all();
-        if($td==null){
+    try {
+        $td = signup::all();
+        if ($td == null) {
             throw new Exception('Data not found');
         }
-        $output=[];
-        $output["result"]=$td;
-        $output['status']="ok";
-        return response()->json($output,200);
-    }
-    catch(\Exception $ex){
-        $error=array("status"=>"failed","error"=>$ex -> getMessage());
-        return response()->json($error,200);
+        $output = [];
+        $output["result"] = $td;
+        $output['status'] = "ok";
+        return response()->json($output, 200);
+    } catch (\Exception $ex) {
+        $error = array("status" => "failed", "error" => $ex->getMessage());
+        return response()->json($error, 200);
     }
 });
+
+
+

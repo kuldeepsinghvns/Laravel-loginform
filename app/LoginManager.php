@@ -31,6 +31,17 @@ class LoginManager
         }
     }
 
+
+    public static function isEmailAndPasswordCorrect($email,$password){
+        
+        $user = Ecommerce::where('email',$email)->where("password",$password)->first();
+
+        if($user==null){
+            return false;
+        }
+        return true;
+    }
+
     // public static function get_current_user()
     // {
     //     if (isset($_SESSION['username'])) {

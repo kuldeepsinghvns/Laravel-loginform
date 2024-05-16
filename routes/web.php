@@ -55,3 +55,31 @@ Route::get('/show',function(){
 Route::get('/test',function(){
     return view('test');
 });
+
+
+Route::get('/master',function(){
+    return view('layout/master');
+});
+
+//  E-commerce
+
+Route::get('/ecommerce',function(){
+    return view('layout/ecommerce');
+});
+
+Route::get('/ecommercesign',function(){
+    return view('layout/ecommercesignup');
+});
+
+Route::post('/ecommercesign',function(){
+    return view('layout/ecommercesignup');
+});
+
+Route::get('/ecommercelogin',function(){
+    return view('layout/ecommercelogin');
+});
+Route::post('/ecommercelogin',function(){
+    return view('layout/ecommercelogin');
+});
+
+
